@@ -67,5 +67,6 @@ Created a User Interface to select files paths to be used in the program
     Documenation: https://docs.python.org/3/library/tkinter.html
 
 # Ethical Considerations
-
+This dataset contains the following personally identifiable information on the surveyed climbers: home country, sex, height, weight, and age. Removing this data would significantly reduce the utility of the dataset. Consider that the dataset does not contain names, personal identification numbers, or specific directory information, pieces of data that increase the probability of identifying an individual. However, there is always the possibility of <br><br>
+*** Work in progress ***
 
