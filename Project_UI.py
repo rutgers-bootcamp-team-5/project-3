@@ -20,18 +20,20 @@ root.geometry("+{}+{}".format(posRight, posDown))
 
 
 
-
 def Run():
 
-    #if not temp1 :
-        finished()
-    #else:
-        #err = Toplevel(root)
-        #err.geometry("400x200")
-        #err.title("Failed")
-        #err.geometry("+{}+{}".format(posRight + 100, posDown))
+    print(f1entry.get())
+
+    if  not f1entry.get():
+        err = Toplevel(root)
+        err.geometry("400x200")
+        err.title("Failed")
+        err.geometry("+{}+{}".format(posRight + 100, posDown))
         #Button(err, text='close', height=2, width=10, command=exitButton()).pack(side=BOTTOM, pady=10)
-        #Label(err, text="Failed, Select the file", font=('Arial', 12)).pack(side=TOP, pady=50)
+        Label(err, text="Failed, Select the file 1", font=('Arial', 12)).pack(side=TOP, pady=50)
+        
+    else:
+        ETLProcess()
 
 
 
@@ -83,15 +85,15 @@ biglabel.pack(side=TOP)
 
 f1button = Button(frame2, text='Choose File 1', height=2, width=10, command=open_file1)
 label_file_explorer = Label(frame3, text='')
-entry = Entry(frame2, textvariable=File1Path, state=DISABLED, fg='black')
+f1entry = Entry(frame2, textvariable=File1Path, state=DISABLED, fg='black')
 f1button.pack(side=LEFT, padx=10, pady=5)
-entry.pack(fill=X, pady=20, padx=10)
+f1entry.pack(fill=X, pady=20, padx=10)
 
 f2button = Button(frame3, text='Choose File 2', height=2, width=10, command=open_file2)
 label_file_explorer = Label(frame3, text='')
-entry = Entry(frame3, textvariable=File2Path, state=DISABLED, fg='black')
+f2entry = Entry(frame3, textvariable=File2Path, state=DISABLED, fg='black')
 f2button.pack(side=LEFT, padx=10, pady=5)
-entry.pack(fill=X, pady=20, padx=10)
+f2entry.pack(fill=X, pady=20, padx=10)
 
 # Round Options to choose from
 ExecuterEntry = Entry(frame4, text='0', width=20)
@@ -107,6 +109,9 @@ CommentEntry.pack(side=LEFT, padx=10, pady=10)
 button = Button(frame6, text="Run", height=2, width=10, command=Run)
 button.pack(side=BOTTOM, pady=30)
 
+def ETLProcess():
+    finished()
+
 # Handles Popup once application is Finished
 def finished():
     top = Toplevel(root)
@@ -114,6 +119,7 @@ def finished():
     top.title("Success")
     top.geometry("+{}+{}".format(posRight + 100, posDown))
     Button(top, text='close', height=2, width=10, command=close).pack(side=BOTTOM, pady=10)
+    #Label(top, text="Finished!", font=('Arial', 12)).pack(side=TOP, pady=50)
     Label(top, text="Finished!", font=('Arial', 12)).pack(side=TOP, pady=50)
 
 
