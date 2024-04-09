@@ -30,7 +30,7 @@ Supplemental:
  + Grade Conversions [https://climbinghouse.com/grades-charts-conversion/]
   
 
-# Process Flow
+# Process Flow - Of Jupiter Notebook
 1. Use of a user interface to get the date paths of CSV files to be read into a Pandas Dataframe using Jupiter Notebook.
 
 2. Transform - Using Jupiter Notebook 
@@ -43,14 +43,22 @@ Supplemental:
         - if greater than Zero: 'Tall Person"
         - if zero : 'Neutral'
     e. Clean up the grades by changing the data type from string to float
+
   Climers DF
+    a. Read the Climer DF csv into a Pandas DataFrame
+    b. Check Datatype for each column, check if there are any null values
+    c. Change the sex column values where 0 = Male and 1 = Female
+    d. Changing age column to have values for age range for data anonymization
+    e. rename column height and weight to represent unit 
+    f. change date to a date format
 
 3. Load - Loading into a New postgreSQL data base
-   a. Load data from Jupiter Notebook to postgreSQL via Psycopg2   
-   b. Confirm that the load was successfull by querying getting all the data and printing it out.
+   a. Load both data sets from Jupiter Notebook to postgreSQL via Psycopg2   
+   b. For each table Confirm that the load was successfull by querying getting all the data and printing it out.
 
 ## Create Project UI
 Created a User Interface to select files paths to be used in the program
+User Interface is used to select the files and run the same python code as the Jupiter Notebook and load the file into SQL Database. 
 
 # Additional Library Used  
  - 'pycong2'  
@@ -67,6 +75,6 @@ Created a User Interface to select files paths to be used in the program
     Documenation: https://docs.python.org/3/library/tkinter.html
 
 # Ethical Considerations
-This dataset contains the following personally identifiable information on the surveyed climbers: home country, sex, height, weight, and age. Removing this data would significantly reduce the utility of the dataset. Consider that the dataset does not contain names, personal identification numbers, or specific directory information, pieces of data that increase the probability of identifying an individual. However, there is always the possibility of <br><br>
+This dataset contains the following personally identifiable information on the surveyed climbers: home country, sex, height, weight, and age. Removing this data would significantly reduce the utility of the dataset. Consider that the dataset does not contain names, personal identification numbers, or specific directory information, pieces of data that increase the probability of identifying an individual. However, there is always the possibility of there being so few options that a the identity can be narrowed down to a few possible options. To avoid that, this dataset was transformer to have an age range and a height range instead of conreate values.<br><br>
 *** Work in progress ***
 
