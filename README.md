@@ -15,13 +15,26 @@ Phil Tsao
 
 ## Project Overview
 The goal of this project is to create an ETL data pipeline that will consume data in the .csv format and create a postgreSQL database.
+
 ## Sources
 https://www.kaggle.com/datasets/jordizar/climb-dataset/data
 
-# Process Flow
-1. Extract - Read the data in a CSV file into a Pandas Dataframe using Jupiter Notebook.
+## Data Tables
+Main:
+ + Routes Rateds
+ + Climer DF
+ + Cluster
 
-2. Transform - Using Jupiter Notebook
+Supplemental:
+ + Country Codes ISO-3166-1 [https://en.wikipedia.org/wiki/ISO_3166-1]
+ + Grade Conversions [https://climbinghouse.com/grades-charts-conversion/]
+  
+
+# Process Flow
+1. Use of a user interface to get the date paths of CSV files to be read into a Pandas Dataframe using Jupiter Notebook.
+
+2. Transform - Using Jupiter Notebook 
+  Routes Rated
     a. Change column names for storage
     b. Change 'crag', 'sector' and 'name' columns to be title case
     c. Change the Country Abbrivation to be all upper case
@@ -30,10 +43,14 @@ https://www.kaggle.com/datasets/jordizar/climb-dataset/data
         - if greater than Zero: 'Tall Person"
         - if zero : 'Neutral'
     e. Clean up the grades by changing the data type from string to float
+  Climers DF
 
 3. Load - Loading into a New postgreSQL data base
    a. Load data from Jupiter Notebook to postgreSQL via Psycopg2   
    b. Confirm that the load was successfull by querying getting all the data and printing it out.
+
+## Create Project UI
+Created a User Interface to select files paths to be used in the program
 
 # Additional Library Used  
  - 'pycong2'  
@@ -45,6 +62,11 @@ https://www.kaggle.com/datasets/jordizar/climb-dataset/data
 
     Psycopg is released under the terms of the GNU Lesser General Public License, allowing use from both free and proprietary software.
 
-# Ethical Considerations
+  - 'tkinter' the standard Python interface to the Tcl/Tk GUI toolkit.
+    
+    Documenation: https://docs.python.org/3/library/tkinter.html
 
+# Ethical Considerations
+This dataset contains the following personally identifiable information on the surveyed climbers: home country, sex, height, weight, and age. Removing this data would significantly reduce the utility of the dataset. Consider that the dataset does not contain names, personal identification numbers, or specific directory information, pieces of data that increase the probability of identifying an individual. However, there is always the possibility of <br><br>
+*** Work in progress ***
 
