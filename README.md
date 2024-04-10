@@ -56,9 +56,14 @@ Supplemental:
    a. Load both data sets from Jupiter Notebook to postgreSQL via Psycopg2   
    b. For each table Confirm that the load was successfull by querying getting all the data and printing it out.
 
-## Create Project UI
+## Create Project UI - Load Data
 Created a User Interface to select files paths to be used in the program
 User Interface is used to select the files and run the same python code as the Jupiter Notebook and load the file into SQL Database. 
+
+## Create Project UI - Access Data
+Create a User Intercase to recomend a route based to user input.
+ - The program accesses the database of routes, filters it based on user input and then displays the top scoring route based to the filters.
+ - If can not find an route then display a message. 
 
 # Additional Library Used  
  - 'pycong2'  
