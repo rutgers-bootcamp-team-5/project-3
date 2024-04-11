@@ -75,13 +75,14 @@ User Interface is used to select the files and run the same python code as the J
     Documenation: https://docs.python.org/3/library/tkinter.html
 
 # Ethical Considerations
-This dataset contains the following personally identifiable information (PII) on the surveyed climbers: 
+The climber dataset contains the following personally identifiable information (PII) on the surveyed climbers: 
 - home country
 - sex
 - height
 - weight
 - age<br>
 <br>
-While it is best practice to eliminate PII from publicly available datasets, removing all this data would result in missed opportunities for interesting analysis. Instead, the data was obscured by transforming ages into a 5-year age ranges. In this way, the privacy of the participants was respected without significantly sacrificing analysis. Remember, there is always the possibility that this dataset may be linked to other datasets to deduce identifying information of participants.<br><br>
+While it is best practice to eliminate PII from publicly available datasets, removing all this data would result in missed opportunities for interesting analysis. Instead, the data was obscured by transforming ages into a 5-year age ranges. In this way, the privacy of the participants was respected without significantly sacrificing analysis. Remember, there is always the possibility that this dataset may be linked to other datasets to deduce identifying information of participants.<br>
+In terms of representation, a 64% majority of the surveyed climbers come from Europe. North American follows with 14% of the participants. The remaining continents of Africa, Asia, Australia, and South America each contribute to 5% or less of the surveyed climbers. Such a skew in representation indicates that the data will be less relevant and therefore less useful to those living outside of Europe. While suboptimal, this dataset is intended to be used only for recreational purposes and will not negatively impact the lives of those unaccounted for. <br>
 *** Work in progress ***
 
