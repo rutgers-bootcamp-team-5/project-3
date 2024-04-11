@@ -75,6 +75,13 @@ User Interface is used to select the files and run the same python code as the J
     Documenation: https://docs.python.org/3/library/tkinter.html
 
 # Ethical Considerations
-This dataset contains the following personally identifiable information on the surveyed climbers: home country, sex, height, weight, and age. Removing this data would significantly reduce the utility of the dataset. Consider that the dataset does not contain names, personal identification numbers, or specific directory information, pieces of data that increase the probability of identifying an individual. However, there is always the possibility of there being so few options that a the identity can be narrowed down to a few possible options. To avoid that, this dataset was transformer to have an age range and a height range instead of conreate values.<br><br>
+This dataset contains the following personally identifiable information (PII) on the surveyed climbers: 
+- home country
+- sex
+- height
+- weight
+- age<br>
+<br>
+While it is best practice to eliminate PII from publicly available datasets, removing all this data would result in missed opportunities for interesting analysis. Instead, the data was obscured by transforming ages into a 5-year age ranges. In this way, the privacy of the participants was respected without significantly sacrificing analysis. Remember, there is always the possibility that this dataset may be linked to other datasets to deduce identifying information of participants.<br><br>
 *** Work in progress ***
 
