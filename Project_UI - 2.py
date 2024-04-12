@@ -1,5 +1,7 @@
+import crag_recommender
 import csv
 import os
+
 from tkinter import *
 from datetime import datetime
 from tkinter import filedialog
@@ -117,7 +119,6 @@ def finished():
 
 # Function to  Close Application once finished
 
-
 class Table:
      
   def __init__(self,root,countryName,Grade_Range_Ub,Grade_Range_Lb,Tall):
@@ -136,17 +137,18 @@ class Table:
                 self.e.insert(END, lst[i][j])
 
 # Matt integrate you code here
-lst = [    ('ID','Name','Country','Age'),
-           (1,'Leonid','USA',19),
-           (2,'Matthew','USA',18),
-           (3,'Phil','USA',20),
-           (4,'Vibhuti','USA',21),
-           (5,'Raina','Tailand',21),
-           (6,'Bala','India',21)]
+# lst = [    ('ID','Name','Country','Age'),
+#            (1,'Leonid','USA',19),
+#            (2,'Matthew','USA',18),
+#            (3,'Phil','USA',20),
+#            (4,'Vibhuti','USA',21),
+#            (5,'Raina','Tailand',21),
+#            (6,'Bala','India',21)]
+        crag, lst = crag_recommender.main(countryName, Grade_Range_Lb,Grade_Range_Ub, Tall)
   
      # find total number of rows and
      # columns in list
-total_rows = len(lst)
-total_columns = len(lst[0])
+        total_rows = len(lst)
+        total_columns = len(lst[0])
 
-root.mainloop()
+        root.mainloop()
