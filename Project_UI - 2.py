@@ -90,8 +90,15 @@ TallEntryLabel.pack(side=LEFT, padx=10)
 TallEntry = Entry(frame4, text='', width=20)
 TallEntry.pack(side=LEFT, padx=10, pady=10)
 
-button = Button(frame5, text="Run", height=2, width=10, command=Run)
-button.pack(side=BOTTOM, pady=30)
+def close():
+    root.destroy()
+
+buttonB = Button(frame5, text="Run", height=2, width=10, command=Run)
+buttonB.pack(side=LEFT, padx=150, pady=25)
+buttonC = Button(frame5, text="Close", height=2, width=10, command=close)
+buttonC.pack(side=LEFT, pady=25)
+
+
 
 def ETLProcess():
     #print(fpath1)
@@ -104,18 +111,42 @@ def finished():
 
     print(SelectedText)
 
-    top = Toplevel(root)
-    top.geometry("400x200")
-    top.title("Success")
-    top.geometry("+{}+{}".format(posRight + 100, posDown))
-    Button(top, text='close', height=2, width=10, command=close).pack(side=BOTTOM, pady=10)
-    #Label(top, text="Finished!", font=('Arial', 12)).pack(side=TOP, pady=50)
-    Label(top, text=SelectedText, font=('Arial', 12)).pack(side=TOP, pady=50)
-
+    # create root window
+    root = Tk()
+    t = Table(root,CountryEntry.get(),GradeUpperEntry.get(),GradeLowerEntry.get(),TallEntry.get())
 
 # Function to  Close Application once finished
-def close():
-    root.destroy()
 
+
+class Table:
+     
+  def __init__(self,root,countryName,Grade_Range_Ub,Grade_Range_Lb,Tall):
+         
+        print("Country Name : " + countryName)
+        print("Grade Range (Upper bound) : " + Grade_Range_Ub)
+        print("Grade Range (Lower bound) : "+ Grade_Range_Lb)
+        print("Tall\Short : " + Tall)
+
+        # code for creating table
+        for i in range(total_rows):
+            for j in range(total_columns):
+                 
+                self.e = Entry(root, width=20, fg='blue',font=('Arial',16,'bold'))
+                self.e.grid(row=i, column=j)
+                self.e.insert(END, lst[i][j])
+
+# Matt integrate you code here
+lst = [    ('ID','Name','Country','Age'),
+           (1,'Leonid','USA',19),
+           (2,'Matthew','USA',18),
+           (3,'Phil','USA',20),
+           (4,'Vibhuti','USA',21),
+           (5,'Raina','Tailand',21),
+           (6,'Bala','India',21)]
+  
+     # find total number of rows and
+     # columns in list
+total_rows = len(lst)
+total_columns = len(lst[0])
 
 root.mainloop()
