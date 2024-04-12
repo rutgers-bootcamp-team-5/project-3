@@ -73,6 +73,15 @@ User Interface is used to select the files and run the same python code as the J
   - 'tkinter' the standard Python interface to the Tcl/Tk GUI toolkit.
     
     Documenation: https://docs.python.org/3/library/tkinter.html
+# Database used to store data
+- SQL
+
+SQL database is used since data is organized into columns and rows within a table, SQL databases use a relational model that work best with well-defined structured data, such as routes Ids and country code, in which relations exist between different entities. Within a SQL database, tables are linked through "foreign keys"  that form relations between different tables and fields, such as routes rated and climber df with country codes and grade conversion tables.
+
+# ERD Diagram
+
+Refer to Relationship diagram folder for ERD diagram and schema file.
+
 
 # Ethical Considerations
 The climber dataset contains the following personally identifiable information (PII) on the surveyed climbers: 
