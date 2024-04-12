@@ -66,7 +66,7 @@ Create a User Intercase to recomend a route based to user input.
  - If can not find an route then display a message. 
 
 # Additional Library Used  
- - 'pycong2'  
+ - 'psycopg2'  
     Psycopg is the most popular PostgreSQL adapter for the Python programming language. Its core is a complete implementation of the Python DB API 2.0 specifications. Several extensions allow access to many of the features offered by PostgreSQL.
 
     using Version 2.9.9
@@ -78,8 +78,25 @@ Create a User Intercase to recomend a route based to user input.
   - 'tkinter' the standard Python interface to the Tcl/Tk GUI toolkit.
     
     Documenation: https://docs.python.org/3/library/tkinter.html
+# Database used to store data
+- SQL
+
+SQL database is used since data is organized into columns and rows within a table, SQL databases use a relational model that work best with well-defined structured data, such as routes Ids and country code, in which relations exist between different entities. Within a SQL database, tables are linked through "foreign keys"  that form relations between different tables and fields, such as routes rated and climber df with country codes and grade conversion tables.
+
+# ERD Diagram
+
+Refer to Relationship diagram folder for ERD diagram and schema file.
+
 
 # Ethical Considerations
-This dataset contains the following personally identifiable information on the surveyed climbers: home country, sex, height, weight, and age. Removing this data would significantly reduce the utility of the dataset. Consider that the dataset does not contain names, personal identification numbers, or specific directory information, pieces of data that increase the probability of identifying an individual. However, there is always the possibility of there being so few options that a the identity can be narrowed down to a few possible options. To avoid that, this dataset was transformer to have an age range and a height range instead of conreate values.<br><br>
+The climber dataset contains the following personally identifiable information (PII) on the surveyed climbers: 
+- home country
+- sex
+- height
+- weight
+- age<br>
+<br>
+While it is best practice to eliminate PII from publicly available datasets, removing all this data would result in missed opportunities for interesting analysis. Instead, the data was obscured by transforming ages into a 5-year age ranges. In this way, the privacy of the participants was respected without significantly sacrificing analysis. Remember, there is always the possibility that this dataset may be linked to other datasets to deduce identifying information of participants.<br>
+In terms of representation, a 64% majority of the surveyed climbers come from Europe. North American follows with 14% of the participants. The remaining continents of Africa, Asia, Australia, and South America each contribute to 5% or less of the surveyed climbers. Such a skew in representation indicates that the data will be less relevant and therefore less useful to those living outside of Europe. While suboptimal, this dataset is intended to be used only for recreational purposes and will not negatively impact the lives of those unaccounted for. <br>
 *** Work in progress ***
 
