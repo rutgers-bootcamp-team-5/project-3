@@ -7,9 +7,12 @@ import pandas as pd
 import psycopg2
 import psycopg2.sql as sql
 
+# user_credentials.py must be created locally. Initialize variables for username and password in this file.
+import user_credentials
+
 from pathlib import Path
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, exc, text
 
 # initialize Tkinter which manages the GUI elements
 root = Tk()
@@ -185,11 +188,14 @@ button.pack(side=BOTTOM, pady=30)
 
 #import routesratedcsv
 def RoutesRated():
+
+    ########### READ DATA SHEETS INTO DATAFRAME ###########
     routes_df = pd.read_csv(fpath1)
     climber_df = pd.read_csv(fpath2)
-    # clusters_df = pd.read_csv(fpath3)
-    # country_df = pd.read_csv(fpath4)
-    # grades_df = pd.read_csv(fpath5)
+    clusters_df = pd.read_csv(fpath3)
+    countries_df = pd.read_csv(fpath4)
+    grades_df = pd.read_csv(fpath5)
+
     # Format case of text columns
     routes_df['country'] = routes_df['country'].str.upper()
     routes_df['crag'] = routes_df['crag'].str.title()
@@ -248,30 +254,33 @@ def RoutesRated():
     df['date_last'] = pd.to_datetime(df['date_last'])
 
 
-    # Connect to postgres and create a database
+    ########### DATABASE + TABLES CREATION ###########
+    database_name = 'climbing_db'
     try:
-        conn = psycopg2.connect("user=postgres password = 'admin'")
+        conn = psycopg2.connect(f'user={user_credentials.username} password={user_credentials.password}')
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cursor = conn.cursor()
-        database_name = "climber_db"
-    # Create table statement
-        sqlCreateDatabase = "CREATE DATABASE "+database_name+";"
-    # Create a table in PostgreSQL database
-        cursor.execute(sqlCreateDatabase)
-    except: 
-        print('Database already exists')
-    
+        cursor.execute(f'CREATE DATABASE {database_name};')
+    except psycopg2.errors.DuplicateDatabase: 
+        print(f'{database_name} database already exists')
+    finally:
+        cursor.close()
+        conn.close()
+
     # Set connection to new created database using psycopg2
+    host = 'localhost'
+    port = '5432'
     try:
-        conn = psycopg2.connect(database = "climber_db", user = "postgres", password = "admin", host = "localhost", port = "5432")
-    except:
+        conn = psycopg2.connect(database=database_name, user=user_credentials.username, password=user_credentials.password, host =host, port=port)
+    except psycopg2.errors.OperationalError:
         print("Database connection not successful") 
 
-    # Create a table using psycopg2 connection
+    # Create a routes table using psycopg2 connection
+    routes_table = 'routes'
     cursor = conn.cursor()
-    table_creation = '''
-    CREATE TABLE IF NOT EXISTS route_ratings (
-        name_id INT PRIMARY KEY,
+    table_creation = f'''
+    CREATE TABLE IF NOT EXISTS {routes_table} (
+        route_id INT PRIMARY KEY,
         country VARCHAR(3),
         crag TEXT NOT NULL,
         sector TEXT NOT NULL,
@@ -286,35 +295,102 @@ def RoutesRated():
     conn.commit()
 
     # Insert dataframe into database table
-    engine = create_engine('postgresql://postgres:admin@localhost:5432/climber_db')
-    routes_df.to_sql('route_ratings', engine, if_exists='append', index = False)
+    try:
+        engine = create_engine(f'postgresql://{user_credentials.username}:{user_credentials.password}@{host}:{port}/{database_name}')
+        routes_df.to_sql(routes_table, engine, if_exists='append', index = False)
+    except exc.IntegrityError:
+        print('Attempted to insert a duplicate key. Check whether your data is already present in the database.')
 
+    #Create climbers table
+    climber_table = 'climbers'
     cursor = conn.cursor()
-    table_creation = '''
-    CREATE TABLE IF NOT EXISTS climber_data(
-        user_id VARCHAR(255),
-        country VARCHAR (255) NOT NULL,
-        sex TEXT,
+    table_creation = f'''
+    CREATE TABLE IF NOT EXISTS {climber_table}(
+        user_id INT PRIMARY KEY,
+        country VARCHAR (5) NOT NULL,
+        sex CHAR(1) NOT NULL,
         height_cm INT,
         weight_kg INT,
-        age_range VARCHAR(255),
+        age_range VARCHAR(5) NOT NULL,
         years_cl INT,
-        date_first VARCHAR (255),
-        date_last VARCHAR(255),
+        date_first VARCHAR (20),
+        date_last VARCHAR(20),
         grades_count INT,
         grades_first INT,
         grades_last INT,
         grades_max INT,
-        grades_mean VARCHAR(255),
+        grades_mean FLOAT,
         Year_first INT,
         year_last INT)
     '''
     cursor.execute(table_creation)
     conn.commit()
 
-    #Insert climber_data into database table
-    engine = create_engine('postgresql://postgres:admin@localhost:5432/climber_db')
-    df.to_sql('climber_data', engine, if_exists='append', index = False)
+    # Insert dataframe into database table
+    try:
+        engine = create_engine(f'postgresql://{user_credentials.username}:{user_credentials.password}@{host}:{port}/{database_name}')
+        climber_df.to_sql(climber_table, engine, if_exists='append', index = False)
+    except exc.IntegrityError:
+        print('Attempted to insert a duplicate key. Check whether your data is already present in the database.')
+
+    # Create clusters table using psycopg2 connection
+    clusters_table = 'clusters'
+    cursor = conn.cursor()
+    table_creation = f'''
+    CREATE TABLE IF NOT EXISTS {clusters_table} (
+        cluster_id INT PRIMARY KEY,
+        description VARCHAR
+    );
+    '''
+    cursor.execute(table_creation)
+    conn.commit()
+
+    # Insert dataframe into database table
+    try:
+        engine = create_engine(f'postgresql://{user_credentials.username}:{user_credentials.password}@{host}:{port}/{database_name}')
+        clusters_df.to_sql(clusters_table, engine, if_exists='append', index = False)
+    except exc.IntegrityError:
+        print('Attempted to insert a duplicate key. Check whether your data is already present in the database.')
+
+    # Create a grades table using psycopg2 connection
+    grades_table = 'grades'
+    cursor = conn.cursor()
+    table_creation = f'''
+    CREATE TABLE IF NOT EXISTS {grades_table} (
+        grade_id INT PRIMARY KEY,
+        grade_fra VARCHAR(15),
+        grade_yds VARCHAR(15),
+        grade_v VARCHAR(15)
+    );
+    '''
+    cursor.execute(table_creation)
+    conn.commit()
+
+    # Insert dataframe into database table
+    try:
+        engine = create_engine(f'postgresql://{user_credentials.username}:{user_credentials.password}@{host}:{port}/{database_name}')
+        grades_df.to_sql(grades_table, engine, if_exists='append', index = False)
+    except exc.IntegrityError:
+        print('Attempted to insert a duplicate key. Check whether your data is already present in the database.')
+
+    # Create a table using psycopg2 connection
+    countries_table = 'countries'
+    cursor = conn.cursor()
+    table_creation = f'''
+    CREATE TABLE IF NOT EXISTS {countries_table} (
+        country_id VARCHAR(5) PRIMARY KEY,
+        country VARCHAR(100)
+    );
+    '''
+    cursor.execute(table_creation)
+    conn.commit()
+
+    # Insert dataframe into database table
+    try:
+        engine = create_engine(f'postgresql://{user_credentials.username}:{user_credentials.password}@{host}:{port}/{database_name}')
+        countries_df.to_sql(countries_table, engine, if_exists='append', index = False)
+    except exc.IntegrityError:
+        print('Attempted to insert a duplicate key. Check whether your data is already present in the database.')
 
     # close connection and cursor
     cursor.close()
