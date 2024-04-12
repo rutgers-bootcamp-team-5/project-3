@@ -61,7 +61,7 @@ Created a User Interface to select files paths to be used in the program
 User Interface is used to select the files and run the same python code as the Jupiter Notebook and load the file into SQL Database. 
 
 # Additional Library Used  
- - 'pycong2'  
+ - 'psycopg2'  
     Psycopg is the most popular PostgreSQL adapter for the Python programming language. Its core is a complete implementation of the Python DB API 2.0 specifications. Several extensions allow access to many of the features offered by PostgreSQL.
 
     using Version 2.9.9
