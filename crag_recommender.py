@@ -3,6 +3,9 @@ import psycopg2
 import user_credentials
 
 def main(country, grade_lower, grade_upper, style):
+    country = country.title()
+    style = style.title()
+
     # Choose desired grading scale
     try:
         if '.' in grade_lower:
