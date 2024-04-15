@@ -128,27 +128,30 @@ class Table:
         print("Grade Range (Lower bound) : "+ Grade_Range_Lb)
         print("Tall\Short : " + Tall)
 
+        lst = crag_recommender.main(countryName, Grade_Range_Lb,Grade_Range_Ub, Tall)
+
         # code for creating table
-        for i in range(total_rows):
-            for j in range(total_columns):
+        for i in range(len(lst)):
+            for j in range(len(lst[0])):
                  
                 self.e = Entry(root, width=20, fg='blue',font=('Arial',16,'bold'))
                 self.e.grid(row=i, column=j)
                 self.e.insert(END, lst[i][j])
 
 # Matt integrate you code here
-# lst = [    ('ID','Name','Country','Age'),
+# lst = [ ('ID','Name','Country','Age'),
 #            (1,'Leonid','USA',19),
 #            (2,'Matthew','USA',18),
 #            (3,'Phil','USA',20),
 #            (4,'Vibhuti','USA',21),
 #            (5,'Raina','Tailand',21),
 #            (6,'Bala','India',21)]
-        crag, lst = crag_recommender.main(countryName, Grade_Range_Lb,Grade_Range_Ub, Tall)
+
+#crag, lst = crag_recommender.main(countryName, Grade_Range_Lb,Grade_Range_Ub, Tall)
   
      # find total number of rows and
      # columns in list
-        total_rows = len(lst)
-        total_columns = len(lst[0])
+#total_rows = len(lst)
+#total_columns = len(lst[0])
 
-        root.mainloop()
+root.mainloop()
