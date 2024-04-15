@@ -10,10 +10,16 @@ def main(country, grade_lower, grade_upper, style):
     try:
         if '.' in grade_lower:
             selected_scale = 'grade_yds'
+            grade_lower = grade_lower.lower()
+            grade_upper = grade_upper.lower()
         elif 'v' in grade_lower.lower():
             selected_scale = 'grade_v'
+            grade_lower = grade_lower.upper()
+            grade_upper = grade_upper.upper()
         else:
             selected_scale = 'grade_fra'
+            grade_lower = grade_lower.lower()
+            grade_upper = grade_upper.lower()
     except TypeError:
         pass    # Handle bad grade error
 
