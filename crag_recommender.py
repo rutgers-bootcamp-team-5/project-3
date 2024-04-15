@@ -46,8 +46,8 @@ def main(country, grade_lower, grade_upper, style):
     filtered_df = df[df['style'] == style]
 
     # Filter for grade range
-    min_grade = filtered_df[filtered_df['grade'] == grade_lower]['grade_mean'].min()
-    max_grade = filtered_df[filtered_df['grade'] == grade_upper]['grade_mean'].max()
+    min_grade = filtered_df[filtered_df['grade_mean'] == grade_lower]['grade_mean'].min()
+    max_grade = filtered_df[filtered_df['grade_mean'] == grade_upper]['grade_mean'].max()
     filtered_df = filtered_df[(filtered_df['grade_mean'] >= min_grade) & (filtered_df['grade_mean'] <= max_grade)]
 
     # Keep crags with at least 5 routes
