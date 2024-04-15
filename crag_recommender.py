@@ -64,5 +64,5 @@ def main(country, grade_lower, grade_upper, style):
     filtered_df = filtered_df[filtered_df['crag'] == best_crag].sort_values('rating', ascending=False)
 
     # Collect outputs
-    output_columns = ['sector', 'route name', 'grade', 'rating']
-    return (best_crag, [tuple(output_columns)] + list(filtered_df[output_columns].itertuples(index=False, name=None)))
+    output_columns = ['crag', 'sector', 'route name', 'grade', 'rating']
+    return [tuple(output_columns)] + list(filtered_df[output_columns].itertuples(index=False, name=None))
