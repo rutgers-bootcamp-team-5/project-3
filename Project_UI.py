@@ -21,21 +21,39 @@ posRight = int(posRight / 2)
 
 root.geometry("+{}+{}".format(posRight, posDown))
 
-
+SelectedFiles = StringVar()
+SelectedFiles = ""
 
 def Run():
 
     print(f1entry.get())
     #print(ExecuterEntry.get())
 
+    SelectedFiles = ""
+
     if  not f1entry.get():
+        SelectedFiles = " routes_rated" + ","
+    
+    if  not f2entry.get():
+        SelectedFiles = SelectedFiles + " climber_df" + ","
+
+    if  not f3entry.get():
+        SelectedFiles = SelectedFiles + " clusters" + ","
+
+    if  not f4entry.get():
+        SelectedFiles = SelectedFiles + " country_codes"
+
+    if  not f5entry.get():
+        SelectedFiles = SelectedFiles + " grades_conversion"
+
+    if  SelectedFiles:
+        SelectedFiles = "Choose the files "  + SelectedFiles
         err = Toplevel(root)
-        err.geometry("400x200")
+        err.geometry("800x200")
         err.title("Failed")
         err.geometry("+{}+{}".format(posRight + 100, posDown))
-        #Button(err, text='close', height=2, width=10, command=exitButton()).pack(side=BOTTOM, pady=10)
-        Label(err, text="Failed, Select the file 1", font=('Arial', 12)).pack(side=TOP, pady=50)
-        
+        #Button(err, text='close', height=2, width=10, command=err.close()).pack(side=BOTTOM, pady=10)
+        Label(err, text=SelectedFiles + " to proceed !", font=('Arial', 12)).pack(side=TOP, pady=50)
     else:
         ETLProcess()
 
@@ -196,7 +214,7 @@ def finished():
     top.geometry("+{}+{}".format(posRight + 100, posDown))
     Button(top, text='close', height=2, width=10, command=close).pack(side=BOTTOM, pady=10)
     #Label(top, text="Finished!", font=('Arial', 12)).pack(side=TOP, pady=50)
-    Label(top, text="Finished!", font=('Arial', 12)).pack(side=TOP, pady=50)
+    Label(top, text="Successfully completed ETL process !!!", font=('Arial', 12)).pack(side=TOP, pady=50)
 
 
 # Function to  Close Application once finished
