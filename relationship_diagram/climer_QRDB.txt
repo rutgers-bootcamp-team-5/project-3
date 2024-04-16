@@ -1,4 +1,4 @@
-climer
+climber
 ------
 user_id string PK
 country string FK >- country.code
