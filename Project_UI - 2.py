@@ -10,7 +10,7 @@ from tkinter import filedialog
 # initialize Tkinter which manages the GUI elements
 root = Tk()
 root.geometry("600x350")
-root.title('Project 3')
+root.title('Project 3 - Team 5')
 # Gets the requested values of the height and width.
 winWidth = root.winfo_reqwidth()
 winHeight = root.winfo_reqheight()
@@ -68,7 +68,7 @@ frame4.pack(fill=X)
 frame5 = Frame()
 frame5.pack(fill=X)
 
-biglabel = Label(frame1, text='Team 5 Project', font=('Arial', 20), fg='blue')
+biglabel = Label(frame1, text='Data Retrieval UI', font=('Arial', 20), fg='blue')
 biglabel.pack(side=TOP)
 
 # Round Options to choose from
