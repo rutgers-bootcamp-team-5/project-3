@@ -3,10 +3,10 @@ clusters
 cluster_id INT pk 
 description VARCHAR
 
-country
+countries
 ----
-code string PK
-name string
+code VARCHAR(5) PK
+name VARCHAR(100)
 
 grades
 -----
