@@ -36,12 +36,12 @@ year_last INT
 
 routes
 ----------
-name_id PK
-country string FK >- country.code
-crag string
-sector string
-name string
-tall_recommend_sum string FK >- tall_recommend_sum.tall_recommend_sum
-grade_mean float
-cluster string FK >- cluster.cluster_id
-rating_tot string
+name_id INT PK
+country VARCHAR(5) FK >- country.code
+crag VARCHAR(50)
+sector VARCHAR(50)
+name VARCHAR(100)
+grade_mean INT INT FK >- grades.grade_id
+cluster INT FK >- cluster.cluster_id
+rating_tot FLOAT
+style VARCHAR(7)
