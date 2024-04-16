@@ -10,7 +10,7 @@
 import pandas as pd
 import psycopg2
 
-# user_credentials.py must be created locally. Initialize variables for username and password in this file.
+# user_credentials.py must be created locally. Initialize variables for username and password in this file with your postgres credentials.
 import user_credentials
 
 from pathlib import Path
