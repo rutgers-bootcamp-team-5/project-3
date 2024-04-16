@@ -1,3 +1,25 @@
+cluster
+----
+cluster_id string pk 
+description string
+
+country
+----
+code string PK
+name string
+
+grades
+-----
+grade_id float PK
+grade_fra float
+
+tall_recommend_sum
+-------
+recomend_id int PK
+height string FK
+tall_recommend_sum string FK
+easy bool
+
 climbers
 ------
 user_id INT PK
@@ -28,30 +50,3 @@ tall_recommend_sum string FK >- tall_recommend_sum.tall_recommend_sum
 grade_mean float
 cluster string FK >- cluster.cluster_id
 rating_tot string
-
-grades
------
-grade_id float PK
-grade_fra float
-
-country
-----
-code string PK
-name string
-
-tall_recommend_sum
--------
-recomend_id int PK
-height string FK
-tall_recommend_sum string FK
-easy bool
-
-sex
----
-sex_code int PK
-sex_name string
-
-cluster
-----
-cluster_id string pk 
-description string
