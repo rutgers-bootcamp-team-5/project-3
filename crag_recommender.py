@@ -60,7 +60,10 @@ def main(country, grade_lower, grade_upper, style):
     filtered_df = filtered_df.groupby('crag').filter(lambda x: len(x) > 4)
 
     # Select the crag containing routes with the greatest average rating
-    best_crag = filtered_df.groupby('crag')['rating'].mean().sort_values(ascending=False).index[0]
+    try:
+        best_crag = filtered_df.groupby('crag')['rating'].mean().sort_values(ascending=False).index[0]
+    except IndexError:
+        best_crag = 'No results'
     filtered_df = filtered_df[filtered_df['crag'] == best_crag].sort_values('rating', ascending=False)
 
     # Collect outputs
