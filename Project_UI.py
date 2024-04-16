@@ -11,7 +11,7 @@ from pathlib import Path
 # initialize Tkinter which manages the GUI elements
 root = Tk()
 root.geometry("800x500")
-root.title('Project 3')
+root.title('Project 3 - Team 5')
 # Gets the requested values of the height and width.
 winWidth = root.winfo_reqwidth()
 winHeight = root.winfo_reqheight()
@@ -151,7 +151,7 @@ frame8.pack(fill=X)
 frame9 = Frame()
 frame9.pack(fill=X)
 
-biglabel = Label(frame1, text='Team 5', font=('Calibri', 20), fg='blue')
+biglabel = Label(frame1, text='ETL Process UI', font=('Calibri', 20), fg='blue')
 biglabel.pack(side=TOP)
 
 f1button = Button(frame2, text='Choose routes_rated', height=2, width=20, command=open_file1)
