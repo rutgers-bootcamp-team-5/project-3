@@ -147,7 +147,7 @@ def create_and_import_table():
         style VARCHAR(7) NOT NULL,
         FOREIGN KEY(country) REFERENCES countries(country_id),
         FOREIGN KEY(grade_mean) REFERENCES grades(grade_id),
-        FOREIGN KEY(cluster) REFERENCES clusters(cluster_id),
+        FOREIGN KEY(cluster) REFERENCES clusters(cluster_id)
     );
     '''
     cursor.execute(table_creation)
@@ -194,8 +194,8 @@ def create_and_import_table():
         weight_kg INT,
         age_range VARCHAR(5) NOT NULL,
         years_cl INT,
-        date_first DATETIME,
-        date_last DATETIME,
+        date_first TIMESTAMP,
+        date_last TIMESTAMP,
         grades_count INT,
         grades_first INT,
         grades_last INT,
