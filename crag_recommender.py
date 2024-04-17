@@ -26,7 +26,7 @@ def main(country, grade_lower, grade_upper, style):
             grade_lower = grade_lower.lower()
             grade_upper = grade_upper.lower()
     except TypeError:
-        return ['Grade not recognized.']
+        return [('Grade not recognized.')]
 
     # Connect to the climbing_db database
     database_name = "climbing_db"
@@ -35,7 +35,7 @@ def main(country, grade_lower, grade_upper, style):
                                 host = "localhost", port = "5432")
         cursor = conn.cursor()
     except psycopg2.errors.OperationalError:
-        return ['Database connection failed.']
+        return [('Database connection failed.')]
 
     # Query data
     cursor.execute(f'''
@@ -68,7 +68,7 @@ def main(country, grade_lower, grade_upper, style):
     try:
         best_crag = filtered_df.groupby('crag')['rating'].mean().sort_values(ascending=False).index[0]
     except IndexError:
-        best_crag = 'No results'
+        return [('No results.', 'Try a new query.')]
     filtered_df = filtered_df[filtered_df['crag'] == best_crag].sort_values('rating', ascending=False)
 
     # Collect outputs
