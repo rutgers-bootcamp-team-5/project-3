@@ -16,7 +16,7 @@ from pathlib import Path
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from sqlalchemy import create_engine, exc, text
 
-def main(routes_csv, counrties_csv, grades_csv, clusters_csv, climbers_csv):
+def main(routes_csv, countries_csv, grades_csv, clusters_csv, climbers_csv):
     # Read routes data into dataframe
     routes_df = pd.read_csv(routes_csv)
     routes_df.rename(columns={'name_id' : 'route_id'}, inplace=True)
@@ -66,7 +66,7 @@ def main(routes_csv, counrties_csv, grades_csv, clusters_csv, climbers_csv):
         print("Database connection not successful") 
 
     #Read country_codes.csv into dataframe
-    countries_df = pd.read_csv(counrties_csv)
+    countries_df = pd.read_csv(countries_csv)
     #Read grades_conversions.csv into dataframe
     grades_df = pd.read_csv(grades_csv)
     #Read clusters.csv into dataframe
