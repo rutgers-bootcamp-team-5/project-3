@@ -73,4 +73,4 @@ def main(country, grade_lower, grade_upper, style):
 
     # Collect outputs
     output_columns = ['crag', 'sector', 'route name', 'grade', 'rating']
-    return [tuple(output_columns)] + list(filtered_df[output_columns].itertuples(index=False, name=None))
+    return [tuple([x.title() for x in output_columns])] + list(filtered_df[output_columns].itertuples(index=False, name=None))
