@@ -4,7 +4,7 @@ import user_credentials # user_credentials.py must be created locally. Initializ
                         # username and password in this file with your postgres credentials.
 
 def main(country, grade_lower, grade_upper, style):
-    output_columns = ['crag', 'sector', 'route name', 'grade', 'rating']
+    # Match case to database
     country = country.title()
     style = style.title()
 
@@ -12,18 +12,21 @@ def main(country, grade_lower, grade_upper, style):
     try:
         if '.' in grade_lower:
             selected_scale = 'grade_yds'
+            # Match case to database
             grade_lower = grade_lower.lower()
             grade_upper = grade_upper.lower()
         elif 'v' in grade_lower.lower():
             selected_scale = 'grade_v'
+            # Match case to database
             grade_lower = grade_lower.upper()
             grade_upper = grade_upper.upper()
         else:
             selected_scale = 'grade_fra'
+            # Match case to database
             grade_lower = grade_lower.lower()
             grade_upper = grade_upper.lower()
     except TypeError:
-        pass    # Handle bad grade error
+        return ['Grade not recognized.']
 
     # Connect to the climbing_db database
     database_name = "climbing_db"
@@ -32,8 +35,7 @@ def main(country, grade_lower, grade_upper, style):
                                 host = "localhost", port = "5432")
         cursor = conn.cursor()
     except psycopg2.errors.OperationalError:
-        print("Database connection not successful")
-        return [tuple(output_columns)]
+        return ['Database connection failed.']
 
     # Query data
     cursor.execute(f'''
@@ -70,4 +72,5 @@ def main(country, grade_lower, grade_upper, style):
     filtered_df = filtered_df[filtered_df['crag'] == best_crag].sort_values('rating', ascending=False)
 
     # Collect outputs
+    output_columns = ['crag', 'sector', 'route name', 'grade', 'rating']
     return [tuple(output_columns)] + list(filtered_df[output_columns].itertuples(index=False, name=None))
