@@ -1,12 +1,8 @@
-import csv
 import os
-from tkinter import *
-from datetime import datetime
-from tkinter import filedialog
-import psycopg2.sql as sql
-import create_and_import_tables
 
-from pathlib import Path
+from scripts import create_and_import_tables
+from tkinter import *
+from tkinter import filedialog
 
 # initialize Tkinter which manages the GUI elements
 root = Tk()
