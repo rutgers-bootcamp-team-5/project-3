@@ -154,34 +154,34 @@ frame9.pack(fill=X)
 biglabel = Label(frame1, text='ETL Process UI', font=('Calibri', 20), fg='blue')
 biglabel.pack(side=TOP)
 
-f1button = Button(frame2, text='Choose routes_rated', height=2, width=20, command=open_file1)
+routes_button = Button(frame2, text='Choose routes_rated', height=2, width=20, command=open_file1)
 label_file_explorer = Label(frame2, text='')
 f1entry = Entry(frame2, textvariable=File1Path, state=DISABLED, fg='black')
-f1button.pack(side=LEFT, padx=10, pady=5)
+routes_button.pack(side=LEFT, padx=10, pady=5)
 f1entry.pack(fill=X, pady=20, padx=10)
 
-f2button = Button(frame3, text='Choose climber_df', height=2, width=20, command=open_file2)
+climbers_button = Button(frame3, text='Choose climber_df', height=2, width=20, command=open_file2)
 label_file_explorer = Label(frame3, text='')
 f2entry = Entry(frame3, textvariable=File2Path, state=DISABLED, fg='black')
-f2button.pack(side=LEFT, padx=10, pady=5)
+climbers_button.pack(side=LEFT, padx=10, pady=5)
 f2entry.pack(fill=X, pady=20, padx=10)
 
-f3button = Button(frame4, text='Choose clusters', height=2, width=20, command=open_file3)
+clusters_button = Button(frame4, text='Choose clusters', height=2, width=20, command=open_file3)
 label_file_explorer = Label(frame4, text='')
 f3entry = Entry(frame4, textvariable=File3Path, state=DISABLED, fg='black')
-f3button.pack(side=LEFT, padx=10, pady=5)
+clusters_button.pack(side=LEFT, padx=10, pady=5)
 f3entry.pack(fill=X, pady=20, padx=10)
 
-f4button = Button(frame5, text='Choose country_codes', height=2, width=20, command=open_file4)
+countries_button = Button(frame5, text='Choose country_codes', height=2, width=20, command=open_file4)
 label_file_explorer = Label(frame5, text='')
 f4entry = Entry(frame5, textvariable=File4Path, state=DISABLED, fg='black')
-f4button.pack(side=LEFT, padx=10, pady=5)
+countries_button.pack(side=LEFT, padx=10, pady=5)
 f4entry.pack(fill=X, pady=20, padx=10)
 
-f5button = Button(frame6, text='Choose grades_conversion', height=2, width=20, command=open_file5)
+grades_button = Button(frame6, text='Choose grades_conversion', height=2, width=20, command=open_file5)
 label_file_explorer = Label(frame5, text='')
 f5entry = Entry(frame6, textvariable=File5Path, state=DISABLED, fg='black')
-f5button.pack(side=LEFT, padx=10, pady=5)
+grades_button.pack(side=LEFT, padx=10, pady=5)
 f5entry.pack(fill=X, pady=20, padx=10)
 
 # Round Options to choose from
@@ -201,7 +201,7 @@ button.pack(side=BOTTOM, pady=30)
 
 def ETLProcess():
     #print(fpath1)
-    create_and_import_tables.create_and_import_table()
+    create_and_import_tables.main()
     finished()
 
 
