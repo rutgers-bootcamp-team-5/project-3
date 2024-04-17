@@ -16,9 +16,9 @@ from pathlib import Path
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from sqlalchemy import create_engine, exc, text
 
-def main():
+def main(routes_csv, counrties_csv, grades_csv, clusters_csv, climbers_csv):
     # Read routes data into dataframe
-    routes_df = pd.read_csv(Path('data', 'routes_rated.csv'))
+    routes_df = pd.read_csv(routes_csv)
     routes_df.rename(columns={'name_id' : 'route_id'}, inplace=True)
 
     # Format case of text columns
@@ -66,11 +66,11 @@ def main():
         print("Database connection not successful") 
 
     #Read country_codes.csv into dataframe
-    countries_df = pd.read_csv(Path('data', 'country_codes.csv'))
+    countries_df = pd.read_csv(counrties_csv)
     #Read grades_conversions.csv into dataframe
-    grades_df = pd.read_csv(Path('data', 'grades_conversion_table.csv'))
+    grades_df = pd.read_csv(grades_csv)
     #Read clusters.csv into dataframe
-    clusters_df = pd.read_csv(Path('data', 'clusters.csv'))
+    clusters_df = pd.read_csv(clusters_csv)
 
     # Create countries table using psycopg2 connection
     countries_table = 'countries'
@@ -161,7 +161,7 @@ def main():
         print('Attempted to insert a duplicate key. Check whether your data is already present in the database.')
 
     # Read climber data in dataframe
-    climber_df = pd.read_csv(Path('data', 'climber_df.csv'))
+    climber_df = pd.read_csv(climbers_csv)
 
     # Replace sex column values where 0 = Male and 1 = Female
     climber_df['sex'].replace([0, 1], ['M', 'F'], inplace=True)
