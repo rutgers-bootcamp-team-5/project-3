@@ -18,7 +18,7 @@ grade_v VARCHAR(3)
 climbers
 ------
 user_id INT PK
-country VARCHAR(5) FK >- country.code
+country VARCHAR(5) FK >- countries.code
 sex CHAR
 height_cm INT
 weight_kg INT
@@ -37,11 +37,11 @@ year_last INT
 routes
 ----------
 name_id INT PK
-country VARCHAR(5) FK >- country.code
+country VARCHAR(5) FK >- countries.code
 crag VARCHAR(50)
 sector VARCHAR(50)
 name VARCHAR(100)
 grade_mean INT FK >- grades.grade_id
-cluster INT FK >- cluster.cluster_id
+cluster INT FK >- clusters.cluster_id
 rating_tot FLOAT
 style VARCHAR(7)
