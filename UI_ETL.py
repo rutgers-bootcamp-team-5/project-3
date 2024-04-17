@@ -195,7 +195,10 @@ button.pack(side=BOTTOM, pady=30)
 
 def ETLProcess():
     #print(fpath1)
-    create_and_import_tables.main(routes_entry.get(), countries_entry.get(), grades_entry.get(), clusters_entry.get(), climbers_entry.get())
+    error_report = create_and_import_tables.main(
+        routes_entry.get(), countries_entry.get(), grades_entry.get(), clusters_entry.get(), climbers_entry.get())
+    for e in error_report:
+        print(e)
     finished()
 
 
