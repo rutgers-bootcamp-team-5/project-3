@@ -4,6 +4,7 @@ import user_credentials # user_credentials.py must be created locally. Initializ
                         # username and password in this file with your postgres credentials.
 
 def main(country, grade_lower, grade_upper, style):
+    output_columns = ['crag', 'sector', 'route name', 'grade', 'rating']
     country = country.title()
     style = style.title()
 
@@ -32,6 +33,7 @@ def main(country, grade_lower, grade_upper, style):
         cursor = conn.cursor()
     except psycopg2.errors.OperationalError:
         print("Database connection not successful")
+        return [tuple(output_columns)]
 
     # Query data
     cursor.execute(f'''
@@ -68,5 +70,4 @@ def main(country, grade_lower, grade_upper, style):
     filtered_df = filtered_df[filtered_df['crag'] == best_crag].sort_values('rating', ascending=False)
 
     # Collect outputs
-    output_columns = ['crag', 'sector', 'route name', 'grade', 'rating']
     return [tuple(output_columns)] + list(filtered_df[output_columns].itertuples(index=False, name=None))
