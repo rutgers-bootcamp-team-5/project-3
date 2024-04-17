@@ -97,7 +97,7 @@ def create_and_import_table():
     table_creation = f'''
     CREATE TABLE IF NOT EXISTS {clusters_table} (
         cluster_id INT PRIMARY KEY,
-        description VARCHAR
+        description VARCHAR(100)
     );
     '''
     cursor.execute(table_creation)
@@ -116,9 +116,9 @@ def create_and_import_table():
     table_creation = f'''
     CREATE TABLE IF NOT EXISTS {grades_table} (
         grade_id INT PRIMARY KEY,
-        grade_fra VARCHAR(15),
-        grade_yds VARCHAR(15),
-        grade_v VARCHAR(15)
+        grade_fra VARCHAR(7),
+        grade_yds VARCHAR(5),
+        grade_v VARCHAR(3)
     );
     '''
     cursor.execute(table_creation)
@@ -137,17 +137,17 @@ def create_and_import_table():
     table_creation = f'''
     CREATE TABLE IF NOT EXISTS {routes_table} (
         route_id INT PRIMARY KEY,
-        country VARCHAR(3),
-        crag TEXT NOT NULL,
-        sector TEXT NOT NULL,
-        name TEXT NOT NULL,
+        country VARCHAR(5),
+        crag VARCHAR(50) NOT NULL,
+        sector VARCHAR(50) NOT NULL,
+        name VARCHAR(100) NOT NULL,
         grade_mean INT,
         cluster INT,
         rating_tot FLOAT,
-        style TEXT NOT NULL,
-        FOREIGN KEY(cluster) REFERENCES clusters(cluster_id),
+        style VARCHAR(7) NOT NULL,
         FOREIGN KEY(country) REFERENCES countries(country_id),
-        FOREIGN KEY(grade_mean) REFERENCES grades(grade_id)
+        FOREIGN KEY(grade_mean) REFERENCES grades(grade_id),
+        FOREIGN KEY(cluster) REFERENCES clusters(cluster_id),
     );
     '''
     cursor.execute(table_creation)
@@ -194,16 +194,19 @@ def create_and_import_table():
         weight_kg INT,
         age_range VARCHAR(5) NOT NULL,
         years_cl INT,
-        date_first VARCHAR (20),
-        date_last VARCHAR(20),
+        date_first DATETIME,
+        date_last DATETIME,
         grades_count INT,
         grades_first INT,
         grades_last INT,
         grades_max INT,
         grades_mean INT,
-        Year_first INT,
+        year_first INT,
         year_last INT,
         FOREIGN KEY(country) REFERENCES countries(country_id),
+        FOREIGN KEY (grades_first) REFERENCES grades(grade_id),
+        FOREIGN KEY (grades_last) REFERENCES grades(grade_id),
+        FOREIGN KEY (grades_max) REFERENCES grades(grade_id),
         FOREIGN KEY (grades_mean) REFERENCES grades(grade_id)
         );
     '''
