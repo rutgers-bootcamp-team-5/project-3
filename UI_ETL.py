@@ -26,24 +26,24 @@ SelectedFiles = ""
 
 def Run():
 
-    print(f1entry.get())
+    print(routes_entry.get())
     #print(ExecuterEntry.get())
 
     SelectedFiles = ""
 
-    if  not f1entry.get():
+    if  not routes_entry.get():
         SelectedFiles = " routes_rated" + ","
     
-    if  not f2entry.get():
+    if  not climbers_entry.get():
         SelectedFiles = SelectedFiles + " climber_df" + ","
 
-    if  not f3entry.get():
+    if  not clusters_entry.get():
         SelectedFiles = SelectedFiles + " clusters" + ","
 
-    if  not f4entry.get():
+    if  not countries_entry.get():
         SelectedFiles = SelectedFiles + " country_codes"
 
-    if  not f5entry.get():
+    if  not grades_entry.get():
         SelectedFiles = SelectedFiles + " grades_conversion"
 
     if  SelectedFiles:
@@ -156,33 +156,33 @@ biglabel.pack(side=TOP)
 
 routes_button = Button(frame2, text='Choose routes_rated', height=2, width=20, command=open_file1)
 label_file_explorer = Label(frame2, text='')
-f1entry = Entry(frame2, textvariable=File1Path, state=DISABLED, fg='black')
+routes_entry = Entry(frame2, textvariable=File1Path, state=DISABLED, fg='black')
 routes_button.pack(side=LEFT, padx=10, pady=5)
-f1entry.pack(fill=X, pady=20, padx=10)
+routes_entry.pack(fill=X, pady=20, padx=10)
 
 climbers_button = Button(frame3, text='Choose climber_df', height=2, width=20, command=open_file2)
 label_file_explorer = Label(frame3, text='')
-f2entry = Entry(frame3, textvariable=File2Path, state=DISABLED, fg='black')
+climbers_entry = Entry(frame3, textvariable=File2Path, state=DISABLED, fg='black')
 climbers_button.pack(side=LEFT, padx=10, pady=5)
-f2entry.pack(fill=X, pady=20, padx=10)
+climbers_entry.pack(fill=X, pady=20, padx=10)
 
 clusters_button = Button(frame4, text='Choose clusters', height=2, width=20, command=open_file3)
 label_file_explorer = Label(frame4, text='')
-f3entry = Entry(frame4, textvariable=File3Path, state=DISABLED, fg='black')
+clusters_entry = Entry(frame4, textvariable=File3Path, state=DISABLED, fg='black')
 clusters_button.pack(side=LEFT, padx=10, pady=5)
-f3entry.pack(fill=X, pady=20, padx=10)
+clusters_entry.pack(fill=X, pady=20, padx=10)
 
 countries_button = Button(frame5, text='Choose country_codes', height=2, width=20, command=open_file4)
 label_file_explorer = Label(frame5, text='')
-f4entry = Entry(frame5, textvariable=File4Path, state=DISABLED, fg='black')
+countries_entry = Entry(frame5, textvariable=File4Path, state=DISABLED, fg='black')
 countries_button.pack(side=LEFT, padx=10, pady=5)
-f4entry.pack(fill=X, pady=20, padx=10)
+countries_entry.pack(fill=X, pady=20, padx=10)
 
 grades_button = Button(frame6, text='Choose grades_conversion', height=2, width=20, command=open_file5)
 label_file_explorer = Label(frame5, text='')
-f5entry = Entry(frame6, textvariable=File5Path, state=DISABLED, fg='black')
+grades_entry = Entry(frame6, textvariable=File5Path, state=DISABLED, fg='black')
 grades_button.pack(side=LEFT, padx=10, pady=5)
-f5entry.pack(fill=X, pady=20, padx=10)
+grades_entry.pack(fill=X, pady=20, padx=10)
 
 # Round Options to choose from
 # ExecuterEntry = Entry(frame7, text='0', width=20)
@@ -198,10 +198,9 @@ f5entry.pack(fill=X, pady=20, padx=10)
 button = Button(frame9, text="Run", height=4, width=20, command=Run)
 button.pack(side=BOTTOM, pady=30)
 
-
 def ETLProcess():
     #print(fpath1)
-    create_and_import_tables.main()
+    create_and_import_tables.main(routes_entry.get(), countries_entry.get(), grades_entry.get(), clusters_entry.get(), climbers_entry.get())
     finished()
 
 
