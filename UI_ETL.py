@@ -1,5 +1,4 @@
-import os
-
+from os import getcwd
 from scripts import create_and_import_tables
 from tkinter import *
 from tkinter import filedialog
@@ -64,7 +63,7 @@ File5Path = StringVar()
 
 def open_file1():
     global fpath1
-    file_path = filedialog.askopenfilename(initialdir = os.getcwd,
+    file_path = filedialog.askopenfilename(initialdir = getcwd,
                                           title = "Select a File",
                                           filetypes = (("CSV files",
                                                         "*.csv*"),
@@ -77,7 +76,7 @@ def open_file1():
     
 def open_file2():
     global fpath2
-    file_path = filedialog.askopenfilename(initialdir = os.getcwd,
+    file_path = filedialog.askopenfilename(initialdir = getcwd,
                                           title = "Select a File",
                                           filetypes = (("CSV files",
                                                         "*.csv*"),
@@ -90,7 +89,7 @@ def open_file2():
     
 def open_file3():
     global fpath3
-    file_path = filedialog.askopenfilename(initialdir = os.getcwd,
+    file_path = filedialog.askopenfilename(initialdir = getcwd,
                                           title = "Select a File",
                                           filetypes = (("CSV files",
                                                         "*.csv*"),
@@ -103,7 +102,7 @@ def open_file3():
     
 def open_file4():
     global fpath4
-    file_path = filedialog.askopenfilename(initialdir = os.getcwd,
+    file_path = filedialog.askopenfilename(initialdir = getcwd,
                                           title = "Select a File",
                                           filetypes = (("CSV files",
                                                         "*.csv*"),
@@ -116,7 +115,7 @@ def open_file4():
 
 def open_file5():
     global fpath5
-    file_path = filedialog.askopenfilename(initialdir = os.getcwd,
+    file_path = filedialog.askopenfilename(initialdir = getcwd,
                                           title = "Select a File",
                                           filetypes = (("CSV files",
                                                         "*.csv*"),
