@@ -16,7 +16,7 @@ from pathlib import Path
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from sqlalchemy import create_engine, exc, text
 
-def create_and_import_table():
+def main():
     # Read routes data into dataframe
     routes_df = pd.read_csv(Path('data', 'routes_rated.csv'))
     routes_df.rename(columns={'name_id' : 'route_id'}, inplace=True)
