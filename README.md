@@ -1,4 +1,4 @@
-# project-3
+# Climbing Around the World
 
 Rutgers Data Science Boot Camp 2023 - 2024
 Project 3 
