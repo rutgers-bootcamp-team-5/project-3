@@ -16,15 +16,34 @@ Phil Tsao
 ## Project Overview
 The goal of this project is to create an ETL data pipeline. Data will be extracted from .csv files, transformed using Python, and loaded into a postgreSQL database.
 
-## Sources
-+ Data table source: [https://www.kaggle.com/datasets/jordizar/climb-dataset/data]
-+ Country Codes ISO-3166-1: [https://en.wikipedia.org/wiki/ISO_3166-1]
-+ Grade Conversions: [https://climbinghouse.com/grades-charts-conversion/]
+# Additional Library Used  
+ - 'psycopg2'  
+    Psycopg is the most popular PostgreSQL adapter for the Python programming language. Its core is a complete implementation of the Python DB API 2.0 specifications. Several extensions allow access to many of the features offered by PostgreSQL.
+
+    using Version 2.9.9
+
+    Documenation: https://www.psycopg.org/docs/   
+
+    Psycopg is released under the terms of the GNU Lesser General Public License, allowing use from both free and proprietary software.
+
+  - 'tkinter' the standard Python interface to the Tcl/Tk GUI toolkit.
+    
+    Documenation: https://docs.python.org/3/library/tkinter.html
+
+# Database used to store data
+- SQL
+
+SQL database is used since data is organized into columns and rows within a table, SQL databases use a relational model that work best with well-defined structured data, such as routes Ids and country code, in which relations exist between different entities. Within a SQL database, tables are linked through "foreign keys"  that form relations between different tables and fields, such as routes rated and climber df with country codes and grade conversion tables.
+
+# ERD Diagram
+
+Refer to Relationship diagram folder for ERD diagram and schema file.
 
 # ETL Process Flow
-1. Use of a user interface to get the date paths of CSV files to be read into a Pandas Dataframe using Jupiter Notebook.
+1. Launch 
+2. Use of a user interface to get the date paths of CSV files to be read into a Pandas Dataframe using Jupiter Notebook.
 
-2. Transform - Using Jupiter Notebook 
+3. Transform - Using Jupiter Notebook 
   Routes Rated
     a. Change column names for storage
     b. Change 'crag', 'sector' and 'name' columns to be title case
@@ -56,28 +75,6 @@ Create a User Intercase to recomend a route based to user input.
  - The program accesses the database of routes, filters it based on user input and then displays the top scoring route based to the filters.
  - If can not find an route then display a message. 
 
-# Additional Library Used  
- - 'psycopg2'  
-    Psycopg is the most popular PostgreSQL adapter for the Python programming language. Its core is a complete implementation of the Python DB API 2.0 specifications. Several extensions allow access to many of the features offered by PostgreSQL.
-
-    using Version 2.9.9
-
-    Documenation: https://www.psycopg.org/docs/   
-
-    Psycopg is released under the terms of the GNU Lesser General Public License, allowing use from both free and proprietary software.
-
-  - 'tkinter' the standard Python interface to the Tcl/Tk GUI toolkit.
-    
-    Documenation: https://docs.python.org/3/library/tkinter.html
-# Database used to store data
-- SQL
-
-SQL database is used since data is organized into columns and rows within a table, SQL databases use a relational model that work best with well-defined structured data, such as routes Ids and country code, in which relations exist between different entities. Within a SQL database, tables are linked through "foreign keys"  that form relations between different tables and fields, such as routes rated and climber df with country codes and grade conversion tables.
-
-# ERD Diagram
-
-Refer to Relationship diagram folder for ERD diagram and schema file.
-
 
 # Ethical Considerations
 The climber dataset contains the following personally identifiable information (PII) on the surveyed climbers: 
@@ -91,3 +88,7 @@ While it is best practice to eliminate PII from publicly available datasets, rem
 In terms of representation, a 64% majority of the surveyed climbers come from Europe. North American follows with 14% of the participants. The remaining continents of Africa, Asia, Australia, and South America each contribute to 5% or less of the surveyed climbers. Such a skew in representation indicates that the data will be less relevant and therefore less useful to those living outside of Europe. While suboptimal, this dataset is intended to be used only for recreational purposes and will not negatively impact the lives of those unaccounted for. <br>
 *** Work in progress ***
 
+## Sources
++ Data table source: [https://www.kaggle.com/datasets/jordizar/climb-dataset/data]
++ Country Codes ISO-3166-1: [https://en.wikipedia.org/wiki/ISO_3166-1]
++ Grade Conversions: [https://climbinghouse.com/grades-charts-conversion/]
