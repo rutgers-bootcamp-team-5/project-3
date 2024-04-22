@@ -16,30 +16,27 @@ Phil Tsao
 ## Project Overview
 The goal of this project is to create an ETL data pipeline. Data will be extracted from .csv files, transformed using Python, and loaded into a postgreSQL database.
 
-# Additional Library Used  
- - 'psycopg2'  
-    Psycopg is the most popular PostgreSQL adapter for the Python programming language. Its core is a complete implementation of the Python DB API 2.0 specifications. Several extensions allow access to many of the features offered by PostgreSQL.
+## Additional Python Libraries 
+### psycopg2 
+psycopg2 is the most popular PostgreSQL adapter for the Python programming language. Its core is a complete implementation of the Python DB API 2.0 specifications. Several extensions allow access to many of the features offered by PostgreSQL.<br>
+Version required: 2.9.9<br>
+Documenation: [https://www.psycopg.org/docs/]<br>
+Psycopg is released under the terms of the GNU Lesser General Public License, allowing use from both free and proprietary software.
 
-    using Version 2.9.9
+### tkinter
+tkinter is the standard Python interface to the Tcl/Tk GUI toolkit.<br>
+Documenation: [https://docs.python.org/3/library/tkinter.html]
 
-    Documenation: https://www.psycopg.org/docs/   
-
-    Psycopg is released under the terms of the GNU Lesser General Public License, allowing use from both free and proprietary software.
-
-  - 'tkinter' the standard Python interface to the Tcl/Tk GUI toolkit.
-    
-    Documenation: https://docs.python.org/3/library/tkinter.html
-
-# Database used to store data
+## Database Design
 - SQL
 
 SQL database is used since data is organized into columns and rows within a table, SQL databases use a relational model that work best with well-defined structured data, such as routes Ids and country code, in which relations exist between different entities. Within a SQL database, tables are linked through "foreign keys"  that form relations between different tables and fields, such as routes rated and climber df with country codes and grade conversion tables.
 
-# ERD Diagram
+## ERD Diagram
 
 Refer to Relationship diagram folder for ERD diagram and schema file.
 
-# ETL Process Flow
+## ETL Process Flow
 1. Launch 
 2. Use of a user interface to get the date paths of CSV files to be read into a Pandas Dataframe using Jupiter Notebook.
 
@@ -76,7 +73,7 @@ Create a User Intercase to recomend a route based to user input.
  - If can not find an route then display a message. 
 
 
-# Ethical Considerations
+## Ethical Considerations
 The climber dataset contains the following personally identifiable information (PII) on the surveyed climbers: 
 - home country
 - sex
