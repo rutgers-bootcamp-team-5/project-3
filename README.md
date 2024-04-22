@@ -17,18 +17,15 @@ Phil Tsao
 The goal of this project is to create an ETL data pipeline. Data will be extracted from .csv files, transformed using Python, and loaded into a postgreSQL database.
 
 ## Sources
-https://www.kaggle.com/datasets/jordizar/climb-dataset/data
++ Data table source: [https://www.kaggle.com/datasets/jordizar/climb-dataset/data]
++ Country Codes ISO-3166-1: [https://en.wikipedia.org/wiki/ISO_3166-1]
++ Grade Conversions: [https://climbinghouse.com/grades-charts-conversion/]
 
 ## Data Tables
 Main:
  + Routes Rateds
  + Climer DF
  + Cluster
-
-Supplemental:
- + Country Codes ISO-3166-1 [https://en.wikipedia.org/wiki/ISO_3166-1]
- + Grade Conversions [https://climbinghouse.com/grades-charts-conversion/]
-  
 
 # Process Flow - Of Jupiter Notebook
 1. Use of a user interface to get the date paths of CSV files to be read into a Pandas Dataframe using Jupiter Notebook.
