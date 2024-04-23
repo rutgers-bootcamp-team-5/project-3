@@ -34,35 +34,10 @@ An SQL database was chosen based on the structure of the data. Each of the data 
 Refer to the relationship_diagram folder for the ERD and schema file.
 
 ## ETL Process Flow
-1. Launch 
-2. Use of a user interface to get the date paths of CSV files to be read into a Pandas Dataframe using Jupiter Notebook.
-
-3. Transform - Using Jupiter Notebook 
-  Routes Rated
-    a. Change column names for storage
-    b. Change 'crag', 'sector' and 'name' columns to be title case
-    c. Change the Country Abbrivation to be all upper case
-    d. Add a column called 'style' where it is transformed based on 'tall_sum_recommendation' value that is then dropped. 
-        - if less than Zero : 'Short Person'
-        - if greater than Zero: 'Tall Person"
-        - if zero : 'Neutral'
-    e. Clean up the grades by changing the data type from string to float
-
-  Climers DF
-    a. Read the Climer DF csv into a Pandas DataFrame
-    b. Check Datatype for each column, check if there are any null values
-    c. Change the sex column values where 0 = Male and 1 = Female
-    d. Changing age column to have values for age range for data anonymization
-    e. rename column height and weight to represent unit 
-    f. change date to a date format
-
-3. Load - Loading into a New postgreSQL data base
-   a. Load both data sets from Jupiter Notebook to postgreSQL via Psycopg2   
-   b. For each table Confirm that the load was successfull by querying getting all the data and printing it out.
-
-## Create Project UI - Load Data
-Created a User Interface to select files paths to be used in the program
-User Interface is used to select the files and run the same python code as the Jupiter Notebook and load the file into SQL Database. 
+1. Launch UI_ETL.py using Python version 3.10 or later.
+2. Select the paths for each of the 5 required .csv files.
+3. Select the run button and wait for the ETL process to execute.
+4. Check the terminal for notes, warnings, and/or errors issue by the program.
 
 ## Create Project UI - Access Data
 Create a User Intercase to recomend a route based to user input.
