@@ -28,12 +28,9 @@ tkinter is the standard Python interface to the Tcl/Tk GUI toolkit.<br>
 Documenation: [https://docs.python.org/3/library/tkinter.html]
 
 ## Database Design
-- SQL
-
-SQL database is used since data is organized into columns and rows within a table, SQL databases use a relational model that work best with well-defined structured data, such as routes Ids and country code, in which relations exist between different entities. Within a SQL database, tables are linked through "foreign keys"  that form relations between different tables and fields, such as routes rated and climber df with country codes and grade conversion tables.
+An SQL database was chosen based on the structure of the data. Each of the data tables is organized into columns and rows. Primary and foreign key relationships exist between the main data tables (climbers and routes) and the ID reference tabels (clusters, countries, and grades).
 
 ## ERD Diagram
-
 Refer to Relationship diagram folder for ERD diagram and schema file.
 
 ## ETL Process Flow
