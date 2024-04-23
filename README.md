@@ -38,19 +38,16 @@ Download the contents of this repository into a local folder and follow the inst
 
 ## ETL Process Flow
 This program will create a local database on your machine loaded with the data from the .csv files in the data folder.
-1. Launch UI_ETL.py using Python version 3.10 or later.
+1. Launch UI_ETL.py using Python version 3.10.13 or later.
 2. Select the paths for each of the 5 required .csv files.
-3. Select the run button and wait for the ETL process to execute.
+3. Select the Run button and wait for the ETL process to execute.
 4. Check the terminal for notes, warnings, and/or errors issue by the program.
 
 ## Crag Recommender
-
-
-## Create Project UI - Access Data
-Create a User Intercase to recomend a route based to user input.
- - The program accesses the database of routes, filters it based on user input and then displays the top scoring route based to the filters.
- - If can not find an route then display a message. 
-
+This program offers a simple user interface to recommend a crag based on user input.
+1. Launch UI_crag_recommender.py using Python version 3.10.13 or later.
+2. Input your climbing preferences. V, YDS, and French grading systems are accomodated.
+3. Select the Run button. A specific crag and a list of routes meeting your requirements will be displayed, ordered by climber community rating.
 
 ## Ethical Considerations
 The climber dataset contains the following personally identifiable information (PII) on the surveyed climbers: 
