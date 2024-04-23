@@ -36,18 +36,21 @@ Refer to the relationship_diagram folder for the ERD and schema file.
 ## Using This Project
 Download the contents of this repository into a local folder and follow the instructions below.
 
-## ETL Process Flow
+### ETL Process Flow
 This program will create a local database on your machine loaded with the data from the .csv files in the data folder.
 1. Launch UI_ETL.py using Python version 3.10.13 or later.
 2. Select the paths for each of the 5 required .csv files.
 3. Select the Run button and wait for the ETL process to execute.
 4. Check the terminal for notes, warnings, and/or errors issue by the program.
 
-## Crag Recommender
+### Crag Recommender
 This program offers a simple user interface to recommend a crag based on user input.
 1. Launch UI_crag_recommender.py using Python version 3.10.13 or later.
 2. Input your climbing preferences. V, YDS, and French grading systems are accomodated.
 3. Select the Run button. A specific crag and a list of routes meeting your requirements will be displayed, ordered by climber community rating.
+
+### development Folder
+This folder contain code snippets used during the development process. None are required for the execution of the final product. It is included for completeness and may be used to better understand the development strategy.
 
 ## Ethical Considerations
 The climber dataset contains the following personally identifiable information (PII) on the surveyed climbers: 
