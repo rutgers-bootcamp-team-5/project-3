@@ -30,8 +30,8 @@ Documenation: [https://docs.python.org/3/library/tkinter.html]
 ## Database Design
 An SQL database was chosen based on the structure of the data. Each of the data tables is organized into columns and rows. Primary and foreign key relationships exist between the main data tables (climbers and routes) and the ID reference tabels (clusters, countries, and grades).
 
-## ERD Diagram
-Refer to Relationship diagram folder for ERD diagram and schema file.
+## Entity Relationship Diagram
+Refer to the relationship_diagram folder for the ERD and schema file.
 
 ## ETL Process Flow
 1. Launch 
