@@ -37,7 +37,7 @@ Refer to the relationship_diagram folder for the ERD and schema file.
 Download the contents of this repository into a local folder and follow the instructions below.
 
 ### ETL Process Flow
-This program will create a local database on your machine loaded with the data from the .csv files in the data folder.
+This program will create a local postgreSQL database on your machine loaded with the data from the .csv files in the data folder.
 1. Launch UI_ETL.py using Python version 3.10.13 or later.
 2. Select the paths for each of the 5 required .csv files.
 3. Select the Run button and wait for the ETL process to execute.
