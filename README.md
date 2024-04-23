@@ -20,15 +20,15 @@ The goal of this project is to create an ETL data pipeline. Data will be extract
 ### psycopg2 
 psycopg2 is the most popular PostgreSQL adapter for the Python programming language. Its core is a complete implementation of the Python DB API 2.0 specifications. Several extensions allow access to many of the features offered by PostgreSQL.<br>
 Version required: 2.9.9<br>
-Documenation: [https://www.psycopg.org/docs/]<br>
-Psycopg is released under the terms of the GNU Lesser General Public License, allowing use from both free and proprietary software.
+Documentation: [https://www.psycopg.org/docs/]<br>
+psycopg2 is released under the terms of the GNU Lesser General Public License, allowing use from both free and proprietary software.
 
 ### tkinter
 tkinter is the standard Python interface to the Tcl/Tk GUI toolkit.<br>
-Documenation: [https://docs.python.org/3/library/tkinter.html]
+Documentation: [https://docs.python.org/3/library/tkinter.html]
 
 ## Database Design
-An SQL database was chosen based on the structure of the data. Each of the data tables is organized into columns and rows. Primary and foreign key relationships exist between the main data tables (climbers and routes) and the ID reference tabels (clusters, countries, and grades).
+An SQL database was chosen based on the structure of the data. Each of the data tables is organized into columns and rows. Primary and foreign key relationships exist between the main data tables (climbers and routes) and the ID reference tables (clusters, countries, and grades).
 
 ## Entity Relationship Diagram
 Refer to the relationship_diagram folder for the ERD and schema file.
@@ -41,16 +41,16 @@ This program will create a local database on your machine loaded with the data f
 1. Launch UI_ETL.py using Python version 3.10.13 or later.
 2. Select the paths for each of the 5 required .csv files.
 3. Select the Run button and wait for the ETL process to execute.
-4. Check the terminal for notes, warnings, and/or errors issue by the program.
+4. Check the terminal for notes, warnings, and/or errors issued by the program.
 
 ### Crag Recommender
 This program offers a simple user interface to recommend a crag based on user input.
 1. Launch UI_crag_recommender.py using Python version 3.10.13 or later.
-2. Input your climbing preferences. V, YDS, and French grading systems are accomodated.
+2. Input your climbing preferences. V, YDS, and French grading systems are accommodated.
 3. Select the Run button. A specific crag and a list of routes meeting your requirements will be displayed, ordered by climber community rating.
 
 ### development Folder
-This folder contain code snippets used during the development process. None are required for the execution of the final product. It is included for completeness and may be used to better understand the development strategy.
+This folder contains code snippets used during the development process. None are required for the execution of the final product. It is included for completeness and may be used to better understand the development strategy.
 
 ## Ethical Considerations
 The climber dataset contains the following personally identifiable information (PII) on the surveyed climbers: 
